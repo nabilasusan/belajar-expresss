@@ -1,8 +1,42 @@
 const express = require("express") // impor modul express
 const app = express() // inisialisasi express
-const port = 3000 // port
+const expressLayout = require("express-ejs-layouts"); // input modul express-ejs-layouts
+const port = 3000;// port
 
-app.set('view engine','ejs');
+app.set("views", __dirname +"/views");
+app.set("view engine", "ejs");
+
+app.use(expressLayout);
+app.use(express.static("public"));
+
+// route/
+app.get("/home", (req,res) => {
+   // res.sendFile(__dirname + "/index.html");
+
+   const berita =[
+    {
+        judul : "Berita 1",
+        isi : "Isi Berita 1"
+    },
+    {
+        judul : "Berita 2",
+        isi : "Isi Berita 2"
+    },
+   ];
+   res.render('index', {title: 'Halaman Home', berita,  layout:'main'});
+})
+
+//route/about
+app.get("/about", (req, res)=>{
+    //res.sendFile(__dirname + "/about.html");
+    res.render('about',  {title: 'Halaman About', layout:'main'});
+});
+
+//route/contact
+app.get("/contact", (req, res)=>{
+    //res.sendFile(__dirname + "/contact.html");
+    res.render('contact', {title: 'Halaman Contact', layout:'main'});
+});
 
 app.get("/prodi", (req, res) => {
     const prodis = [
@@ -13,40 +47,10 @@ app.get("/prodi", (req, res) => {
         { nama: "Manajemen", fakultas: "FEB", singkatan: "MJ" },
         { nama: "Akuntansi", fakultas: "FEB", singkatan: "AK" }
     ];
-
-    res.render('prodi', { title: 'Halaman Prodi', prodis });
-});
-
-// route/
-app.get("/", (req,res) => {
-    //res.sendFile(__dirname + "/index.html");
-
     
-
-    const berita =[
-        {
-            judul: "berita 1",
-            isi: "isi berita 1"
-        },
-        {
-            judul: "berita 2",
-            isi: "isi berita 2"
-        }
-    ];
-    res.render('index', {title :'halaman Home',berita});
-})
-
-//route/about
-app.get("/about", (req, res)=>{
-    //res.sendFile(__dirname + "/about.html");
-    res.render('about', {title :'halaman about'});
+    res.render('prodi', { title: 'Halaman Prodi', prodis, layout:'main'});
 });
 
-//route/contact
-app.get("/contact", (req, res)=>{
-    //res.sendFile(__dirname + "/contact.html");
-    res.render('contact', {title :'halaman contant'});
-});
 
 // route /mahasiswa
 app.get("/mahasiswa", (req, res) => {
@@ -54,9 +58,9 @@ app.get("/mahasiswa", (req, res) => {
         "status": "success",
         "message": "Data mahasiswa",
         "data": [
-            { npm: 222624001, nama: "puspita" },
-            { npm: 222624002, nama: "puspita" },
-            { npm: 222624003, nama: "puspita" }
+            { npm: 222624001, nama: "Angel" },
+            { npm: 222624002, nama: "Budi" },
+            { npm: 222624003, nama: "Cindy" }
         ]
     });
 });
@@ -83,4 +87,3 @@ app.use("/", (req,res)=> {
 app.listen(port, ()=>{
     console.log(`Server dapat diakses di http://localhost:${port}`);
 });
-
