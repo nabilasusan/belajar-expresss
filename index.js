@@ -3,6 +3,12 @@ const app = express() // inisialisasi express
 const expressLayout = require("express-ejs-layouts"); // input modul express-ejs-layouts
 const port = 3000;// port
 
+//import controller
+const mainController = require('../controllers/mainController')
+
+//route
+router.get('/',mainController.index)
+
 app.set("views", __dirname +"/views");
 app.set("view engine", "ejs");
 
