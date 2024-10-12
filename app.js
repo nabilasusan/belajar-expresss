@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'app_server','views')));
 app.set('view engine','ejs');
-
+app.use(expressLayout);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
