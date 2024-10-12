@@ -1,25 +1,11 @@
-<div class="carousel-inner">
-    <div class="carousel-item active">
-        <img src="img/gedung mdp.jpg" alt="Los Angeles" class="d-block" style="width:100%">
-    </div>
-    <div class="carousel-item">
-        <img src="img/bannnerr.jpg" alt="Chicago" class="d-block" style="width:100%">
-    </div>
-    <div class="carousel-item">
-        <img src="img/bannnerr.jpg" alt="New York" class="d-block" style="width:100%">
-    </div>
-</div>
-<!-- <ul>
-    <li><a href="/home">home</a></li>
-    <li><a href="/about">about us</a></li>
-    <li><a href="/contact">contact us</a></li>
-    <li><a href="/prodi">Prodi</a></li>
-</ul> -->
-<p>ini halaman home</p>
-<h4>Berita Terkini</h4>
-<% berita.forEach(data => { %>
- <h5><%= data.judul %></h5>
- <p><%= data.isi %></p>
- <button class="btn btn-primary">Selengkapnya</button>
-<% }) %>
-  
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+  </body>
+</html>
