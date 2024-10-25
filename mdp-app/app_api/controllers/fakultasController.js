@@ -95,4 +95,5 @@ const deleteFakultas = async (req, res) => {
     }
 };
 
+
 module.exports = { getAllFakultas, createFakultas, getFakultasById, updateFakultas, deleteFakultas };
