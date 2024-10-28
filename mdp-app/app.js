@@ -4,19 +4,26 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const expressLayout = require("express-ejs-layouts");
+<<<<<<< HEAD
 const cors = require("cors");
 
 // const prodiRoutes = require('./routes/prodi'); // Adjust the path as needed
 
+=======
+// const prodiRoutes = require('./routes/prodi'); // Adjust the path as needed
+>>>>>>> eb67cfceecf8dc0e55c397ce02e19782c98ce6a8
 const connectDB = require("./app_api/models/db");
 
 var indexRouter = require('./app_server/routes/index');
 var usersRouter = require('./app_server/routes/users');
 var prodiRouter = require('./app_server/routes/prodi');
 const fakultasRouter = require("./app_api/routes/fakultas");
+<<<<<<< HEAD
 
 const prodiRouterapi = require("./app_api/routes/prodi");
 
+=======
+>>>>>>> eb67cfceecf8dc0e55c397ce02e19782c98ce6a8
 var app = express();
 
 // view engine setup
@@ -33,6 +40,11 @@ app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/prodi', prodiRouter);
+app.use('/user', usersRouter);
+app.use('/api/fakultas, fakultasRouter');
+
+//connect ke MongoDB
+connectDB();
 
 app.use("/api/fakultas", fakultasRouter);
 app.use("/api/prodi", prodiRouterapi);
